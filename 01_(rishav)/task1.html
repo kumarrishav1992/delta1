@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>DELTA TASK 1</title>
+<meta name="description" content="Delta Inductions 2013" />
+<meta http-equiv=”X-UA-Compatible” content=”IE=EmulateIE7? />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style type="text/css">
+html, body 
+{
+  overflow: hidden;
+}
+body
+{
+width:1334px;
+height:230px;
+padding:10px;
+border:5px solid gray;
+margin:1px;
+}
+h1
+{
+color:orange;
+position:absolute;
+left:600px; 
+top:10px;
+font-family:"Times New Roman";
+font-size:20px;
+}
+h1:hover
+{
+color:green;
+font-family:"arial";
+font-size:25px;
+}
+#para1
+{ 
+color:white;
+position:absolute;
+left:20px; 
+top:10px;
+font-size:20px;
+}
+#para1:hover
+{ 
+color:red;
+}
+#para2
+{ 
+color:white;
+position:absolute;
+left:1200px; 
+top:10px;
+font-size:20px;
+}
+#para2:hover
+{ 
+color:red;
+}
+</style>
+<script>
+//for circular path
+function display()
+{
+var centerX=500; 
+var centerY=270; 
+var radius=200;
+var angle=0;
+var x=0; 
+var y=0;
+var speed;
+var con=form1.speed.value;
+if(con=="")
+speed=.3;
+else
+speed=con*.1;
+function draw()
+{
+ x = centerX + Math.cos((angle/180)*Math.PI) *radius;
+ y = centerY + Math.sin((angle/180)*Math.PI) *radius;
+ angle += speed;
+var d = document.getElementById('div');
+d.style.position = "absolute";
+d.style.left= x +'px';
+d.style.top= y +'px';
+}
+function gameLoop()
+   {
+    window.setTimeout(gameLoop,1);
+    draw()
+   }
+   gameLoop();
+}
+
+//for square path
+function display1()
+{
+var x=400;
+var y=100;
+var spd;
+var con=form1.speed.value;
+if(con=="")
+spd=10;
+else
+spd=50-con*10;
+function draw()
+{
+var d = document.getElementById('div');
+d.style.position = "absolute";
+if(y==100 && x!=801)
+{
+d.style.left= x+'px';
+d.style.top= 100+'px';
+x=x+1;
+}
+if(x==801 && y!=501)
+{
+d.style.left= 800 +'px';
+d.style.top= y +'px';
+y=y+1;
+}
+
+if( y==501 && x!=399)
+{
+x=x-1;
+d.style.top= 500 +'px';
+d.style.left= x+'px';
+}
+if(x==399 && y!=100)
+{
+y=y-1;
+d.style.top=  y+'px';
+d.style.left= 400+'px';
+}
+}
+function gameLoop() {
+   window.setTimeout(gameLoop,spd);
+    draw()
+   }
+   gameLoop();
+   }
+   
+   
+</script>
+</head>
+<body background ="web-design.jpg">
+<h1 id="task">DELTA TASK 1</h1>
+<p id="para1">WEB</p>
+<p id="para2">DEVELOPMENT</p>
+<h3 id="standard" style="position:absolute; left:70px; top:250px;">STANDARD MODE</h3>
+<h3 id="standard" style="position:absolute; left:1150px; top:250px;">HACKER MODE</h3>
+
+<div id="move"> 
+       <img id="div" src="Android logo.png" alt="delta" style="position:absolute; left:700px; top:270px;"/>
+       <input type="button" value="CLICK HERE" onclick="display()" style="position:absolute; left:70px; top:300px;"/>
+</div>
+
+<form name="form1">
+       <p style="position:absolute; left:1155px; top:300px;">SPEED CONTROL:</p>
+       <p style="position:absolute; left:1155px; top:320px;">(minimum value=1)</p>
+       <input type="number" name="speed" style="position:absolute; left:1155px; top:360px;">
+       <input type="radio" name="hacker" value="hacker" onclick="display()" style="position:absolute; left:1150px; top:400px;"/>
+       <p style="position:absolute; left:1200px; top:385px;">CIRCULAR PATH</p>
+       <input type="radio" name="hacker" value="hacke" onclick="display1()" style="position:absolute; left:1150px; top:420px;"/>
+       <p style="position:absolute; left:1200px; top:405px;">SQUARE PATH</p>
+ </form>
+ 
+</body>
+</html>
